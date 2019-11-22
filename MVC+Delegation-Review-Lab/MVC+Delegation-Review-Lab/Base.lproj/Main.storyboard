@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="XKm-cm-JdD">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="SVo-aq-LC1">
                             <connections>
-                                <segue destination="n5S-41-evN" kind="show" id="Bc7-rf-Tnq"/>
+                                <segue destination="n5S-41-evN" kind="show" id="Hk8-WC-xgl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -81,9 +81,15 @@
                         <subviews>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gWd-Ta-gS9">
                                 <rect key="frame" x="160" y="349" width="94" height="32"/>
+                                <connections>
+                                    <action selector="stepperChanged:" destination="n5S-41-evN" eventType="valueChanged" id="p44-tX-fWL"/>
+                                </connections>
                             </stepper>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jTq-MO-ora">
                                 <rect key="frame" x="68" y="279" width="278" height="31"/>
+                                <connections>
+                                    <action selector="sliderChanged:" destination="n5S-41-evN" eventType="valueChanged" id="ez3-hG-jZG"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table View Font Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aod-Ch-rdk">
                                 <rect key="frame" x="20" y="168" width="374" height="41"/>
@@ -92,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preview Font Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7k-zF-IKH">
-                                <rect key="frame" x="137" y="464.5" width="140" height="21"/>
+                                <rect key="frame" x="137" y="440" width="140" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -113,11 +119,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="awv-ql-Fa8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xBf-Kj-9eO"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="xBf-Kj-9eO">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="PMv-GW-lAn">
+                            <connections>
+                                <segue destination="oMh-4r-nUQ" kind="unwind" unwindAction="updateFromFontSettings:" id="iVD-wx-vap"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="previewFontLabel" destination="p7k-zF-IKH" id="YkY-ek-uZl"/>
+                        <outlet property="sliderFontControl" destination="jTq-MO-ora" id="TVK-Zk-vs1"/>
+                        <outlet property="stepperFontControl" destination="gWd-Ta-gS9" id="S2o-oV-Xhs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vey-59-6dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="oMh-4r-nUQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1571.0144927536232" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="1806" y="7"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jsp-Vx-3id">
