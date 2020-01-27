@@ -14,6 +14,12 @@ class ViewController: UIViewController {
     
     var movies = [Movie]()
     
+    var defaultFont: CGFloat = 17   {
+        didSet  {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -21,7 +27,16 @@ class ViewController: UIViewController {
         movies = Movie.allMovies
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let fontSettingsController = segue.destination as? FontSettingsController
+            else    {
+                fatalError("Segue Error")
+        }
+        
+        defaultFont = fontSettingsController.currentFontSize
+        fontSettingsController.fontDelegate = self
+        
+    }
     //connect from second controller to this action and write unwind function
     
     // done with unwind, can hook up button from source to exit to find this unwind
@@ -44,4 +59,12 @@ extension ViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = movie.year.description
         return cell
     }
+}
+
+extension ViewController: FontChangedDelegate   {
+    func fontChanger(_ fontSize: CGFloat) {
+        defaultFont = fontSize
+    }
+    
+    
 }

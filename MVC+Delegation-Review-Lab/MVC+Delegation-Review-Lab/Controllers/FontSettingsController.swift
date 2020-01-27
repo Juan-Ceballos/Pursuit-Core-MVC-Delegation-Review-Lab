@@ -24,14 +24,14 @@ class FontSettingsController: UIViewController {
     //default size title 17, sub 12
     //myLabel.font = UIFont.systemFont(ofSize: 16)
 
-    var defaultFontSize: Float = 34
+    var defaultFontSize: CGFloat = 34
     
     
-    var currentFontSize: Float = 34 {
+    var currentFontSize: CGFloat = 34 {
         didSet {
-            fontDelegate?.fontChanger(CGFloat(currentFontSize))
+            fontDelegate?.fontChanger(currentFontSize)
             stepperFontControl.value = Double(currentFontSize)
-            sliderFontControl.value = currentFontSize
+            sliderFontControl.value = Float(currentFontSize)
             previewFontLabel.text = "Preview Font Size: \(currentFontSize)"
             fontSettingTitle.font = UIFont.systemFont(ofSize: CGFloat(currentFontSize))
         }
@@ -64,10 +64,10 @@ class FontSettingsController: UIViewController {
     
     
     @IBAction func stepperChanged(_ sender: UIStepper)  {
-        currentFontSize = Float(sender.value).rounded()
+        currentFontSize = CGFloat(Float(sender.value))
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        currentFontSize = sender.value.rounded()
+        currentFontSize = CGFloat(sender.value)
     }
 }
