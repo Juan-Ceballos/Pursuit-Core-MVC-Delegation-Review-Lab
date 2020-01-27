@@ -11,21 +11,23 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var movieTitle: UILabel!
     
     var movies = [Movie]()
     
     var defaultFont: CGFloat = 17   {
         didSet  {
+            
             tableView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         tableView.dataSource = self
         movies = Movie.allMovies
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let fontSettingsController = segue.destination as? FontSettingsController
@@ -35,14 +37,7 @@ class ViewController: UIViewController {
         
         defaultFont = fontSettingsController.currentFontSize
         fontSettingsController.fontDelegate = self
-        
     }
-    //connect from second controller to this action and write unwind function
-    
-    // done with unwind, can hook up button from source to exit to find this unwind
-    // exit needs the function to know where to unwind
-    
-    // code here what u need to get done
     
     
 }
@@ -57,6 +52,8 @@ extension ViewController: UITableViewDataSource {
         let movie = movies[indexPath.row]
         cell.textLabel?.text = movie.name
         cell.detailTextLabel?.text = movie.year.description
+        cell.textLabel?.font = UIFont.systemFont(ofSize: defaultFont)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: defaultFont)
         return cell
     }
 }
@@ -65,6 +62,4 @@ extension ViewController: FontChangedDelegate   {
     func fontChanger(_ fontSize: CGFloat) {
         defaultFont = fontSize
     }
-    
-    
 }

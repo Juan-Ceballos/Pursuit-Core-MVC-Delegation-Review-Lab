@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="XKm-cm-JdD">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="SVo-aq-LC1">
                             <connections>
-                                <segue destination="n5S-41-evN" kind="show" id="Hk8-WC-xgl"/>
+                                <segue destination="n5S-41-evN" kind="show" id="ksJ-Bc-Yhv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -121,11 +121,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xBf-Kj-9eO">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="PMv-GW-lAn">
-                            <connections>
-                                <segue destination="oMh-4r-nUQ" kind="unwind" unwindAction="updateFromFontSettings:" id="iVD-wx-vap"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="OOb-bn-Tth"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -136,9 +132,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vey-59-6dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="oMh-4r-nUQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1805.7971014492755" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="1626" y="7"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jsp-Vx-3id">
@@ -156,7 +151,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaa-O2-ewN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-61" y="7"/>
+            <point key="canvasLocation" x="74" y="7"/>
         </scene>
     </scenes>
 </document>
