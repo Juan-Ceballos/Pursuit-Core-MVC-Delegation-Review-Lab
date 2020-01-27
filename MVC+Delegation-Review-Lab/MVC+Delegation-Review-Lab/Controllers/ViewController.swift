@@ -21,10 +21,9 @@ class ViewController: UIViewController {
         movies = Movie.allMovies
     }
     
+    
     //connect from second controller to this action and write unwind function
-    @IBAction func updateFromFontSettings(_ segue: UIStoryboardSegue)    {
-        guard let fontSettingsController = segue.source as? FontSettingsController else {fatalError("Messed up unwind")}
-    }
+    
     // done with unwind, can hook up button from source to exit to find this unwind
     // exit needs the function to know where to unwind
     

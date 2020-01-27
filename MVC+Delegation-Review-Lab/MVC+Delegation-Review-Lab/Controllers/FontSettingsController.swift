@@ -8,20 +8,32 @@
 
 import UIKit
 
+protocol FontChangedDelegate: AnyObject {
+    func fontChanger(_ fontSize: CGFloat)
+}
+
 class FontSettingsController: UIViewController {
+
    
     @IBOutlet weak var previewFontLabel: UILabel!
     @IBOutlet weak var stepperFontControl: UIStepper!
     @IBOutlet weak var sliderFontControl: UISlider!
+    @IBOutlet weak var fontSettingTitle: UILabel!
+    
+    weak var fontDelegate: FontChangedDelegate?
     //default size title 17, sub 12
     //myLabel.font = UIFont.systemFont(ofSize: 16)
 
-    var defaultFontSize: Float = 17
-    var currentFontSize: Float = 17 {
+    var defaultFontSize: Float = 34
+    
+    
+    var currentFontSize: Float = 34 {
         didSet {
+            fontDelegate?.fontChanger(CGFloat(currentFontSize))
             stepperFontControl.value = Double(currentFontSize)
             sliderFontControl.value = currentFontSize
-            previewFontLabel.text = "\(currentFontSize)"
+            previewFontLabel.text = "Preview Font Size: \(currentFontSize)"
+            fontSettingTitle.font = UIFont.systemFont(ofSize: CGFloat(currentFontSize))
         }
     }
     
@@ -36,13 +48,13 @@ class FontSettingsController: UIViewController {
         stepperFontControl.minimumValue = 1
         stepperFontControl.maximumValue = 80
         stepperFontControl.stepValue = 1
-        stepperFontControl.value = 17
+        stepperFontControl.value = 34
     }
     
     func configureSlider()  {
         sliderFontControl.minimumValue = 1
         sliderFontControl.maximumValue = 80
-        sliderFontControl.value = 17
+        sliderFontControl.value = 34
     }
     
     @IBAction func exitFontSettings(_ segue: UIStoryboard)   {
